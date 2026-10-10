@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="دليل الهوية البصرية لشركة الفاضل العقارية.">
+<meta name="theme-color" content="#0A2C31">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<title>هوية الفاضل العقارية</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@400;500&family=Jost:wght@500&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap">
+<style>
+/* دليل هوية: غلاف بترولي بالشعار، فكرة الشعار مع رسمة بنائه، النسخ، الألوان، الخط، التطبيقات، اللوحة الفنية، الملفات */
+:root{
+  --teal:#0A2C31; --teal-2:#123A40;
+  --brass:#A68243; --brass-l:#C9A869;
+  --sand:#E8E4D9; --paper:#F4F4EF; --ink:#0D1C1E; --mute:#5C6B6C;
+  --cream:#F2EEE6; --line:#D6DCD8;
+  --f-d:"Alexandria","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-b:"IBM Plex Sans Arabic","Alexandria",system-ui,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--f-b);direction:rtl;line-height:1.75}
+h1,h2,h3{font-family:var(--f-d);font-weight:500;text-wrap:balance;line-height:1.25}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:20px}
+.sec{padding-block:76px}
+.sec.t0{padding-top:0}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:14px 40px;align-items:end;margin-bottom:38px}
+.head h2{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--teal)}
+.head p{color:var(--mute);max-width:56ch}
+@media (max-width:760px){ .head{grid-template-columns:1fr} }
+.dot{fill:var(--dot,#A68243)}
+
+/* lockup pieces */
+.lock{display:flex;flex-direction:column;align-items:center}
+.lock .sub{display:flex;align-items:center;gap:.9em;width:100%;margin-top:.9em;font-size:var(--fs,1.2rem)}
+.lock .sub i{flex:1;height:1px;background:currentColor;opacity:.45}
+.lock .sub b{font-family:"Noto Kufi Arabic",var(--f-d);font-weight:400;line-height:1.2}
+.lock .en,.side span{font-family:Jost,sans-serif;font-weight:500;letter-spacing:.42em;direction:ltr;color:var(--dot,#A68243)}
+.lock .en{font-size:calc(var(--fs,1.2rem) * .5);margin-top:.9em;padding-left:.42em}
+.hz{display:flex;align-items:center;gap:22px}
+.hz .vl{width:1px;align-self:stretch;background:currentColor;opacity:.45}
+.side{display:flex;flex-direction:column;gap:8px}
+.side b{font-family:var(--f-d);font-weight:300;font-size:var(--fs,2rem);line-height:1.15}
+.side span{font-size:calc(var(--fs,2rem) * .27);text-align:right}
+
+/* cover */
+.cover{background:var(--teal);color:var(--cream);position:relative;overflow:hidden;--dot:#C9A869}
+.cover .wrap{min-height:min(86vh,740px);display:flex;flex-direction:column;justify-content:space-between;padding-block:28px 32px}
+.cover-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem;color:rgba(242,238,230,.62);font-family:var(--f-d)}
+.cover-mid{display:grid;place-items:center;padding-block:44px}
+.cover-mid .lock{width:min(520px,82vw);--fs:clamp(1.1rem,2.6vw,1.6rem)}
+.cover-mid svg{width:100%;height:auto}
+
+/* concept */
+.concept{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:44px;align-items:center}
+@media (max-width:900px){ .concept{grid-template-columns:1fr} }
+.diagram{background:#fff;border:1px solid var(--line);border-radius:4px;padding:clamp(14px,3vw,30px)}
+.diagram svg{width:100%;height:auto}
+.parts{list-style:none}
+.parts li{display:grid;grid-template-columns:38px 1fr;gap:12px;padding-block:15px;border-top:1px solid var(--line)}
+.parts li:last-child{border-bottom:1px solid var(--line)}
+.parts .n{width:28px;height:28px;border-radius:50%;background:var(--teal);color:var(--cream);display:grid;place-items:center;font-family:var(--f-d);font-size:.8rem}
+.parts h3{font-size:1.05rem;color:var(--teal)}
+.parts p{color:var(--mute);font-size:.94rem}
+
+/* versions */
+.vers{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.v{border-radius:4px;min-height:290px;display:grid;place-items:center;padding:34px 26px;position:relative}
+.v .tag{position:absolute;top:12px;right:14px;font-size:.76rem;font-family:var(--f-d);opacity:.6}
+.v-l{background:#fff;border:1px solid var(--line);color:var(--teal)}
+.v-d{background:var(--teal);color:var(--cream);--dot:#C9A869}
+.v-b{background:var(--brass);color:#fff;--dot:#fff}
+.v-s{background:var(--sand);color:var(--teal)}
+.v-k{background:#111;color:#fff;--dot:#fff}
+.s3{grid-column:span 3}.s2{grid-column:span 2}
+.v .lock{width:min(300px,100%);--fs:1.1rem}
+.v .hz svg{width:150px;height:auto}
+.v .hz{--fs:1.7rem}
+@media (max-width:900px){ .vers{grid-template-columns:1fr 1fr} .s3,.s2{grid-column:span 2} }
+@media (max-width:480px){ .v .hz{flex-direction:column;gap:14px} .v .hz .vl{display:none} }
+
+/* colours */
+.sw{display:grid;grid-template-columns:2fr 1.2fr 1fr 1fr;gap:12px}
+@media (max-width:820px){ .sw{grid-template-columns:1fr 1fr} }
+.sw div{border-radius:4px;min-height:200px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid transparent}
+.sw b{font-family:var(--f-d);font-weight:500}
+.sw span{font-family:var(--f-d);font-size:.82rem;opacity:.78;direction:ltr;text-align:right}
+.sw em{font-style:normal;font-size:.84rem;opacity:.82;margin-top:4px}
+
+/* type */
+.type{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px}
+@media (max-width:820px){ .type{grid-template-columns:1fr} }
+.tc{background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px;min-width:0}
+.tc h3{font-size:1.05rem;color:var(--teal);margin-top:16px}
+.tc p{color:var(--mute);font-size:.94rem}
+.tc .big{color:var(--teal)}
+.tc .big svg{width:min(340px,100%);height:auto}
+.wts div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-block:12px}
+.wts span{font-size:.8rem;color:var(--mute);font-family:var(--f-d);flex:none}
+
+/* applications */
+.apps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+@media (max-width:900px){ .apps{grid-template-columns:1fr} .apps > *{grid-column:auto !important} }
+.sign{grid-column:span 4;border-radius:4px;overflow:hidden;position:relative;min-height:430px;background:var(--teal)}
+.sign img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sign::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,44,49,.05), rgba(10,44,49,.6))}
+.board{position:absolute;z-index:2;top:50%;right:7%;transform:translateY(-50%);background:var(--teal);color:var(--cream);--dot:#C9A869;padding:30px 34px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
+.board .lock{width:210px;--fs:.84rem}
+.phone{grid-column:span 2;border-radius:4px;background:var(--sand);display:grid;place-items:center;padding:30px;min-height:430px}
+.screen{width:210px;aspect-ratio:9/19;border-radius:34px;background:linear-gradient(160deg,#24494F,#0A2C31);border:7px solid #111;padding:34px 18px 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px 10px;align-content:start}
+.app{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:.55rem;color:rgba(255,255,255,.85);font-family:var(--f-d)}
+.app i{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.14);display:block}
+.app svg{width:38px;height:38px}
+.cards{grid-column:span 3;border-radius:4px;background:#DEDCD2;min-height:330px;display:flex;align-items:center;justify-content:center;gap:16px;padding:28px;flex-wrap:wrap}
+.bc{width:250px;aspect-ratio:85/55;border-radius:6px;box-shadow:0 18px 30px -16px rgba(0,0,0,.35);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+.bc.f{background:var(--teal);color:var(--cream);--dot:#C9A869;align-items:center;justify-content:center}
+.bc.f .lock{width:128px;--fs:.6rem}
+.bc.b{background:#fff;color:var(--ink);font-size:.62rem}
+.bc.b b{font-family:var(--f-d);font-size:.86rem;font-weight:500}
+.bc.b .r{display:flex;justify-content:space-between;align-items:flex-end}
+.bc.b .ln{color:var(--mute);line-height:1.6}
+.social{grid-column:span 3;border-radius:4px;background:#fff;border:1px solid var(--line);min-height:330px;display:flex;flex-direction:column;justify-content:center;padding:28px;gap:18px}
+.pf{display:flex;align-items:center;gap:16px}
+.av{width:84px;height:84px;border-radius:50%;background:var(--teal);color:var(--cream);--dot:#C9A869;display:grid;place-items:center;flex:none}
+.av svg{width:56px;height:auto}
+.pf b{font-family:var(--f-d);font-weight:500;font-size:1.05rem;display:block}
+.pf span{color:var(--mute);font-size:.86rem;direction:ltr;display:block;text-align:right}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.post{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden}
+.post img{width:100%;height:100%;object-fit:cover}
+.post svg{width:62%;height:auto}
+
+/* rules + poster + files */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:820px){ .rules{grid-template-columns:1fr} }
+.rule{background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.rule h3{font-size:1.05rem;color:var(--teal)}
+.rule p{color:var(--mute);font-size:.94rem}
+.sizes{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;color:var(--teal)}
+.sizes div{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.76rem;color:var(--mute);font-family:var(--f-d)}
+.sizes svg{color:var(--teal)}
+.clear{display:grid;place-items:center;padding:10px;color:var(--teal)}
+.clear div{padding:24px;outline:1.5px dashed var(--brass)}
+.poster{background:var(--teal);border-radius:4px;padding:clamp(18px,4vw,48px);display:grid;place-items:center}
+.poster img{width:100%;max-width:600px;height:auto;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.files{background:var(--teal);color:var(--cream);border-radius:4px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.files h3{font-size:1.2rem}
+.files p{color:rgba(242,238,230,.72);font-size:.94rem}
+.files code{font-family:var(--f-d);direction:ltr;unicode-bidi:isolate;background:rgba(255,255,255,.08);padding:8px 12px;border-radius:4px;font-size:.86rem;overflow-wrap:anywhere}
+footer{padding-block:38px;text-align:center;color:var(--mute);font-size:.84rem}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wm" viewBox="0 4 173 96">
+    <g fill="currentColor" fill-rule="evenodd"><path d="M0 100 V78 H10 V90 H22 V40.24 L32 36 V90 H39 V78 H47 V90 H53 V64 H87 V100 Z M62 90 V74 H78 V90 Z"/><path d="M95 100 V24.24 L105 20 V90 H115 V64 H137 V90 H145 V8.24 L155 4 V100 Z M122 90 V74 H130 V90 Z"/><path d="M163 100 V34.24 L173 30 V100 Z"/></g>
+    <path class="dot" d="M70 42 L76 48 L70 54 L64 48 Z M126 42 L132 48 L126 54 L120 48 Z"/>
+  </symbol>
+  <symbol id="icon" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="22" fill="#0A2C31"/>
+    <svg x="14" y="30" width="72" height="40" viewBox="0 4 173 96">
+      <g fill="#F2EEE6" fill-rule="evenodd"><path d="M0 100 V78 H10 V90 H22 V40.24 L32 36 V90 H39 V78 H47 V90 H53 V64 H87 V100 Z M62 90 V74 H78 V90 Z"/><path d="M95 100 V24.24 L105 20 V90 H115 V64 H137 V90 H145 V8.24 L155 4 V100 Z M122 90 V74 H130 V90 Z"/><path d="M163 100 V34.24 L173 30 V100 Z"/></g>
+      <path fill="#C9A869" d="M70 42 L76 48 L70 54 L64 48 Z M126 42 L132 48 L126 54 L120 48 Z"/>
+    </svg>
+  </symbol>
+</svg>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-row"><span>دليل الهوية البصرية</span><span>الإصدار ٢، ٢٠٢٦</span></div>
+    <div class="cover-mid">
+      <div class="lock">
+        <svg viewBox="0 4 173 96" role="img" aria-label="الفاضل"><use href="#wm"/></svg>
+        <div class="sub"><i></i><b>العقارية</b><i></i></div>
+        <div class="en">AL FADEL REAL ESTATE</div>
+      </div>
+    </div>
+    <div class="cover-row"><span>الرياض، جدة، مكة المكرمة، المدينة المنورة</span><span>الاسم هو الأفق</span></div>
+  </div>
+</header>
+
+<main>
+<section class="sec wrap">
+  <div class="head">
+    <h2>الاسم نفسه صار أفق مدينة</h2>
+    <p>الشعار هو كلمة "الفاضل" مكتوبة بخط كوفي هندسي مرسوم خصيصًا للشركة. حروفها الطويلة أبراج، وحلقاتها مبانٍ بنوافذ. تقرأ الاسم وتشوف العقار في نفس اللحظة.</p>
+  </div>
+  <div class="concept">
+    <div class="diagram">
+      <svg viewBox="-16 -22 205 150" aria-label="بناء الشعار">
+        <g stroke="#CBD3CF" stroke-width=".3" fill="none">
+          <path d="M-16 100 H189 M-16 90 H189 M-16 64 H189 M0 -22 V128 M22 -22 V128 M32 -22 V128 M53 -22 V128 M87 -22 V128 M95 -22 V128 M105 -22 V128 M115 -22 V128 M137 -22 V128 M145 -22 V128 M155 -22 V128 M163 -22 V128 M173 -22 V128"/>
+        </g>
+        <path d="M-16 76.5 L189 -10.4 M-16 56.35 L189 -30.6" stroke="#A68243" stroke-width=".45" stroke-dasharray="2 1.8" fill="none"/>
+        <svg x="0" y="4" width="173" height="96" viewBox="0 4 173 96" style="color:#0A2C31"><use href="#wm"/></svg>
+        <g font-family="Alexandria" font-size="6" font-weight="500" text-anchor="middle">
+          <g><circle cx="150" cy="-10" r="5.6" fill="#A68243"/><text x="150" y="-7.8" fill="#fff">1</text></g>
+          <g><circle cx="70" cy="82" r="5.6" fill="#A68243"/><text x="70" y="84.2" fill="#fff">2</text></g>
+          <g><path d="M94 6 L74 42 M102 6 L122 42" stroke="#A68243" stroke-width=".5"/><circle cx="98" cy="2" r="5.6" fill="#A68243"/><text x="98" y="4.2" fill="#fff">3</text></g>
+          <g><circle cx="-8" cy="20" r="5.6" fill="#A68243"/><text x="-8" y="22.2" fill="#fff">4</text></g>
+          <g><circle cx="110" cy="114" r="5.6" fill="#A68243"/><text x="110" y="116.2" fill="#fff">5</text><path d="M110 108.4 V100" stroke="#A68243" stroke-width=".5"/></g>
+        </g>
+      </svg>
+    </div>
+    <ol class="parts">
+      <li><span class="n">1</span><div><h3>الألف واللام أبراج</h3><p>أربعة حروف طويلة في الاسم، كل واحد برج بارتفاع مختلف. هي اللي ترسم أفق المدينة.</p></div></li>
+      <li><span class="n">2</span><div><h3>الفاء والضاد مبانٍ</h3><p>حلقة كل حرف صارت مبنى، وعين الحرف نافذته.</p></div></li>
+      <li><span class="n">3</span><div><h3>النقطتان</h3><p>نقطة الفاء ونقطة الضاد معيّنان نحاسيان فوق المبنيين، مثل ضوءين في الأفق. هما اللون الوحيد في الشعار.</p></div></li>
+      <li><span class="n">4</span><div><h3>زاوية واحدة</h3><p>كل الأسطح مائلة بنفس الزاوية، وهي نفس الزاوية اللي تتكرر في صور الموقع.</p></div></li>
+      <li><span class="n">5</span><div><h3>خط الأرض</h3><p>سطر الكتابة هو الأرض اللي تقوم عليها كل المباني. خط واحد مستقيم يربط الاسم كله.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec t0 wrap">
+  <div class="head">
+    <h2>نسخ الشعار</h2>
+    <p>النسخة العمودية هي الأساسية. الأفقية للمساحات العريضة مثل رأس الموقع، والاسم لوحده للأختام والأيقونات.</p>
+  </div>
+  <div class="vers">
+    <div class="v v-l s3"><span class="tag">الأساسي، خلفية فاتحة</span>
+      <div class="lock"><svg viewBox="0 4 173 96"><use href="#wm"/></svg><div class="sub"><i></i><b>العقارية</b><i></i></div><div class="en">AL FADEL REAL ESTATE</div></div></div>
+    <div class="v v-d s3"><span class="tag">الأساسي، خلفية داكنة</span>
+      <div class="lock"><svg viewBox="0 4 173 96"><use href="#wm"/></svg><div class="sub"><i></i><b>العقارية</b><i></i></div><div class="en">AL FADEL REAL ESTATE</div></div></div>
+    <div class="v v-s s3"><span class="tag">أفقي</span>
+      <div class="hz"><svg viewBox="0 4 173 96"><use href="#wm"/></svg><div class="vl"></div><div class="side"><b>العقارية</b><span>AL FADEL REAL ESTATE</span></div></div></div>
+    <div class="v v-b"><span class="tag">على النحاسي</span><svg viewBox="0 4 173 96" width="120"><use href="#wm"/></svg></div>
+    <div class="v v-k"><span class="tag">لون واحد</span><svg viewBox="0 4 173 96" width="120"><use href="#wm"/></svg></div>
+    <div class="v v-l"><span class="tag">الأيقونة</span><svg viewBox="0 0 100 100" width="110"><use href="#icon"/></svg></div>
+  </div>
+</section>
+
+<section class="sec t0 wrap">
+  <div class="head">
+    <h2>الألوان</h2>
+    <p>البترولي هو لون الهوية. النحاسي للتفاصيل الصغيرة فقط: النقطتان، الأرقام، والاسم الإنجليزي.</p>
+  </div>
+  <div class="sw">
+    <div style="background:#0A2C31;color:#F2EEE6"><b>بترولي الفاضل</b><span>#0A2C31</span><em>الشعار، الخلفيات الداكنة، الأزرار</em></div>
+    <div style="background:#A68243;color:#fff"><b>نحاسي</b><span>#A68243</span><em>لمسات فقط</em></div>
+    <div style="background:#F2EEE6;color:#0D1C1E;border-color:#D6DCD8"><b>كريمي</b><span>#F2EEE6</span><em>الشعار على الداكن</em></div>
+    <div style="background:#F4F4EF;color:#0D1C1E;border-color:#D6DCD8"><b>ورقي</b><span>#F4F4EF</span><em>خلفية الموقع</em></div>
+  </div>
+</section>
+
+<section class="sec t0 wrap">
+  <div class="head">
+    <h2>الخط</h2>
+    <p>اسم "الفاضل" مرسوم يدويًا وليس خطًا جاهزًا، فما يتكرر عند أي شركة ثانية. معه ثلاثة خطوط مساندة.</p>
+  </div>
+  <div class="type">
+    <div class="tc">
+      <div class="big"><svg viewBox="0 4 173 96"><use href="#wm"/></svg></div>
+      <h3>حروف مرسومة خصيصًا</h3>
+      <p>كوفي هندسي على شبكة، سماكة واحدة للحروف وزاوية واحدة للأسطح.</p>
+    </div>
+    <div class="tc wts">
+      <div><b style="font-family:'Noto Kufi Arabic';font-weight:400;font-size:1.5rem">العقارية</b><span>Noto Kufi Arabic</span></div>
+      <div><b style="font-family:Jost;font-weight:500;letter-spacing:.42em;color:var(--brass);direction:ltr;font-size:.8rem">AL FADEL REAL ESTATE</b><span>Jost</span></div>
+      <div><b style="font-family:'El Messiri',var(--f-d);font-weight:500;font-size:1.35rem;color:var(--teal)">نعاين العقار قبل ما نعرضه</b><span>عناوين الموقع</span></div>
+      <div><b style="font-family:var(--f-b);font-weight:400;font-size:.98rem">كل إعلان عندنا زاره واحد من فريقنا.</b><span>IBM Plex Sans Arabic</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t0 wrap">
+  <div class="head">
+    <h2>الهوية على أرض الواقع</h2>
+    <p>نماذج توضيحية للشعار على لوحة، أيقونة جوال، بطاقة عمل، وحساب تواصل اجتماعي.</p>
+  </div>
+  <div class="apps">
+    <div class="sign">
+      <img src="../img/villa.jpg" alt="فيلا حديثة" loading="lazy">
+      <div class="board"><div class="lock"><svg viewBox="0 4 173 96"><use href="#wm"/></svg><div class="sub"><i></i><b>العقارية</b><i></i></div><div class="en">AL FADEL REAL ESTATE</div></div></div>
+    </div>
+    <div class="phone">
+      <div class="screen" aria-label="أيقونة التطبيق على شاشة جوال">
+        <div class="app"><i></i>الصور</div><div class="app"><i></i>الخرائط</div><div class="app"><i></i>البريد</div><div class="app"><i></i>التقويم</div>
+        <div class="app"><svg viewBox="0 0 100 100"><use href="#icon"/></svg>الفاضل</div><div class="app"><i></i>الكاميرا</div><div class="app"><i></i>الملاحظات</div><div class="app"><i></i>الإعدادات</div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="bc f"><div class="lock"><svg viewBox="0 4 173 96"><use href="#wm"/></svg><div class="sub"><i></i><b>العقارية</b><i></i></div></div></div>
+      <div class="bc b">
+        <div><b>مستشار عقاري</b><div class="ln">الفاضل العقارية</div></div>
+        <div class="r">
+          <div class="ln"><span style="direction:ltr;unicode-bidi:isolate">+966 50 000 0000</span><br>info@alfadel-realestate.sa<br>الرياض، حي السليمانية</div>
+          <svg viewBox="0 4 173 96" width="54" style="color:#0A2C31"><use href="#wm"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="social">
+      <div class="pf">
+        <div class="av"><svg viewBox="0 4 173 96"><use href="#wm"/></svg></div>
+        <div><b>الفاضل العقارية</b><span>@alfadel.realestate</span></div>
+      </div>
+      <div class="posts">
+        <div class="post"><img src="../img/facade.jpg" alt="" loading="lazy"></div>
+        <div class="post" style="background:#0A2C31;color:#F2EEE6;--dot:#C9A869"><svg viewBox="0 4 173 96"><use href="#wm"/></svg></div>
+        <div class="post" style="background:#E8E4D9;color:#0A2C31"><svg viewBox="0 4 173 96"><use href="#wm"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t0 wrap">
+  <div class="head">
+    <h2>قواعد الاستخدام</h2>
+    <p>قاعدتان تحفظان وضوح الشعار في كل مكان.</p>
+  </div>
+  <div class="rules">
+    <div class="rule">
+      <h3>المساحة الآمنة</h3>
+      <p>اترك حول الشعار فراغًا بعرض حرف الألف مرتين على الأقل، وما يدخل فيه نص ولا صورة.</p>
+      <div class="clear"><div><svg viewBox="0 4 173 96" width="170"><use href="#wm"/></svg></div></div>
+    </div>
+    <div class="rule">
+      <h3>أصغر حجم</h3>
+      <p>الاسم يبقى مقروءًا حتى عرض ٤٠ بكسل. تحت ذلك استخدم الأيقونة.</p>
+      <div class="sizes">
+        <div><svg viewBox="0 4 173 96" width="160"><use href="#wm"/></svg>160px</div>
+        <div><svg viewBox="0 4 173 96" width="80"><use href="#wm"/></svg>80px</div>
+        <div><svg viewBox="0 4 173 96" width="40"><use href="#wm"/></svg>40px</div>
+        <div><svg viewBox="0 0 100 100" width="24"><use href="#icon"/></svg>24px</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t0 wrap">
+  <div class="head">
+    <h2>لوحة فنية للمكتب</h2>
+    <p>الشعار مرسوم كمخطط معماري، بزاوية السقف المشتركة وإحداثيات المدن الأربع. تنفع للطباعة والتعليق في مكتب الشركة.</p>
+  </div>
+  <div class="poster"><img src="poster.png" alt="لوحة فنية لشعار الفاضل العقارية على شكل مخطط معماري" loading="lazy"></div>
+</section>
+
+
+</main>
+<footer>الفاضل العقارية، دليل الهوية البصرية، الإصدار ٢</footer>
+</body>
+</html>

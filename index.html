@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="الفاضل العقارية: شراء وبيع وإيجار العقارات في الرياض وجدة ومكة المكرمة والمدينة المنورة.">
+<meta name="theme-color" content="#0A2C31">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>الفاضل العقارية</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Alexandria:wght@300&family=Jost:wght@500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/*
+  خطة التصميم
+  الفكرة: واجهة الموقع هي شعار الشركة نفسه. أفق من خمس صور (بيت + أربعة أبراج) بنفس زاوية سقف الشعار،
+  كل برج مدينة من مدن الشركة، والضغط عليه يفلتر العقارات. هذا هو العنصر الجريء الوحيد، والباقي هادئ.
+  التخطيط: محاذاة يمين، عمودان في الواجهة (نص + أفق)، شبكة عقارات بلا بطاقات ولا ظلال، شريط بترولي للخدمات.
+  الزاوية المتكررة: ميل 0.424 (سقف الشعار) في الأبراج وفي شطفة زاوية كل صورة.
+*/
+:root{
+  --paper:#F4F4EF;
+  --white:#FFFFFF;
+  --mist:#E2EAE8;
+  --teal:#0A2C31;
+  --teal-2:#15444B;
+  --ink:#0D1C1E;
+  --mute:#5C6B6C;
+  --brass:#A68243;
+  --line:#D3DBD8;
+  --slope:.424;
+  --f-d:"El Messiri","IBM Plex Sans Arabic",serif;
+  --f-b:"IBM Plex Sans Arabic","El Messiri",system-ui,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--f-b);direction:rtl;line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--f-d);font-weight:600;line-height:1.25;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:22px}
+.n{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--teal);color:#fff;border:1px solid var(--teal);
+  padding:12px 22px;border-radius:4px;font-weight:500;font-size:.95rem;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--teal-2)}
+
+/* nav */
+header.top{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:env(safe-area-inset-top,0px);z-index:40}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand svg{flex:none;color:var(--teal)}
+.mk-dot{fill:var(--brass)}
+.brand-t{display:flex;flex-direction:column;line-height:1.1;border-inline-start:1px solid var(--line);padding-inline-start:14px}
+.brand-t b{font-family:"Alexandria",var(--f-b);font-weight:300;font-size:1.25rem;color:var(--teal)}
+.brand-t small{font-family:Jost,sans-serif;font-weight:500;font-size:.48rem;letter-spacing:.34em;color:var(--brass);direction:ltr;text-align:right;margin-top:5px}
+@media (max-width:420px){ .brand-t small{display:none} }
+.top nav{display:flex;gap:28px;font-size:.95rem;color:var(--mute)}
+.top nav a:hover{color:var(--teal)}
+@media (max-width:860px){ .top nav{display:none} }
+
+/* hero */
+.hero{padding-block:44px 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:48px;align-items:end}
+.hero-txt{padding-bottom:44px}
+.hero h1{font-size:clamp(2.2rem,4.6vw,3.9rem);font-weight:700;color:var(--teal);letter-spacing:-.5px;line-height:1.18}
+.hero p.lede{font-size:1.08rem;color:var(--mute);max-width:44ch;margin-top:18px}
+.find{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:30px;background:var(--white);border:1px solid var(--line);border-radius:4px}
+.find label{display:flex;flex-direction:column;padding:10px 14px;font-size:.78rem;color:var(--mute);min-width:0}
+.find label + label{border-inline-start:1px solid var(--line)}
+.find select{border:none;background:transparent;font-size:1rem;font-weight:500;color:var(--ink);padding:2px 0;appearance:none;cursor:pointer;width:100%}
+.find select:focus{outline:none}
+.find label:focus-within{background:var(--mist)}
+.find .btn{grid-column:1/-1;border-radius:0 0 3px 3px;padding-block:14px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:.92rem;color:var(--mute)}
+.facts span + span{border-inline-start:1px solid var(--line);padding-inline-start:22px}
+.facts b{font-family:var(--f-d);font-weight:600;color:var(--teal);font-size:1.1rem}
+
+.skyline{direction:ltr;display:grid;grid-template-columns:repeat(5,1fr);gap:7px;align-items:end;height:clamp(380px,62vh,580px)}
+.tower{position:relative;container-type:inline-size;border:none;background:none;padding:0;cursor:pointer;display:block;width:100%}
+.tower .ph{position:absolute;inset:0;overflow:hidden;background:var(--teal);
+  clip-path:polygon(0 calc(100cqw * var(--slope)), 100% 0, 100% 100%, 0 100%)}
+.tower.house .ph{clip-path:polygon(50% 0, 100% calc(50cqw * .82), 100% 100%, 0 100%, 0 calc(50cqw * .82))}
+.tower img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);transition:filter .5s, transform .8s cubic-bezier(.2,.8,.2,1)}
+.tower .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(10,44,49,.92) 0%, rgba(10,44,49,.5) 34%, rgba(10,44,49,.42) 100%);transition:opacity .5s}
+.tower:hover img,.tower:focus-visible img,.tower[aria-pressed="true"] img{filter:none;transform:scale(1.04)}
+.tower:hover .ph::after,.tower:focus-visible .ph::after,.tower[aria-pressed="true"] .ph::after{opacity:.55}
+.tower .lab{position:absolute;inset:auto 0 0 0;padding:0 8px 14px;color:#fff;text-align:center;direction:rtl;z-index:2;display:flex;flex-direction:column;gap:0;line-height:1.35}
+.tower .lab b{font-family:var(--f-d);font-weight:600;font-size:clamp(.82rem,1.25vw,1.12rem)}
+.tower .lab span{font-size:.72rem;opacity:.82}
+.tower[aria-pressed="true"] .lab b{text-decoration:underline;text-decoration-color:#E3C894;text-underline-offset:5px;text-decoration-thickness:2px}
+.h1{height:40%}.h2{height:64%}.h3{height:100%}.h4{height:79%}.h5{height:50%}
+@media (prefers-reduced-motion:no-preference){
+  .tower{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+  .tower:nth-child(2){animation-delay:.07s}.tower:nth-child(3){animation-delay:.14s}.tower:nth-child(4){animation-delay:.21s}.tower:nth-child(5){animation-delay:.28s}
+  @keyframes rise{from{transform:translateY(46px);opacity:.35}to{transform:none;opacity:1}}
+}
+.ground{height:1px;background:var(--teal)}
+@media (max-width:900px){
+  .hero{padding-top:22px}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .skyline{order:-1;height:300px;gap:5px}
+  .hero-txt{padding-bottom:34px}
+  .tower .lab span{display:none}
+}
+@media (max-width:480px){ .find{grid-template-columns:1fr} .find label + label{border-inline-start:none;border-top:1px solid var(--line)} }
+
+/* sections */
+.sec{padding-block:84px}
+.sec.tight{padding-top:0}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:18px 30px;flex-wrap:wrap;margin-bottom:34px}
+.sec-h h2{font-size:clamp(1.7rem,3.2vw,2.5rem);color:var(--teal)}
+.sec-h p{color:var(--mute);max-width:46ch}
+
+/* listings */
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:transparent;border-radius:4px;padding:8px 16px;font-size:.92rem;cursor:pointer;color:var(--mute);transition:all .2s}
+.chip:hover{border-color:var(--teal);color:var(--teal)}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.status{font-size:.92rem;color:var(--mute);margin-bottom:22px;min-height:1.75em}
+.status button{background:none;border:none;border-bottom:1px solid currentColor;color:var(--teal);cursor:pointer;margin-inline-start:10px;font-weight:500}
+.list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:38px 24px}
+@media (max-width:1080px){ .list{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .list{grid-template-columns:1fr} }
+.item{display:flex;flex-direction:column;container-type:inline-size;min-width:0}
+.item .pic{aspect-ratio:4/3;overflow:hidden;background:var(--mist);
+  clip-path:polygon(22cqw 0, 100% 0, 100% 100%, 0 100%, 0 calc(22cqw * var(--slope)))}
+.item .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.item:hover .pic img{transform:scale(1.05)}
+.item .deal{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--mute);margin-top:14px}
+.item .deal i{width:8px;height:8px;background:var(--brass);display:block}
+.item .deal.rent i{background:var(--teal)}
+.item .price{font-family:var(--f-d);font-weight:700;font-size:1.5rem;color:var(--teal);line-height:1.3;margin-top:2px}
+.item .price small{font-family:var(--f-b);font-weight:400;font-size:.8rem;color:var(--mute);margin-inline-start:4px}
+.item h3{font-family:var(--f-b);font-weight:500;font-size:1rem;line-height:1.5;margin-top:2px}
+.item .where{color:var(--mute);font-size:.9rem}
+.item dl{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:.84rem}
+.item dl div{display:flex;justify-content:space-between;gap:8px}
+.item dt{color:var(--mute)}
+.item dd{font-weight:500}
+.none{grid-column:1/-1;padding:44px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--mute)}
+.none b{display:block;font-family:var(--f-d);font-size:1.3rem;color:var(--teal);font-weight:600;margin-bottom:4px}
+
+/* services band */
+.band{background:var(--teal);color:#fff}
+.band .sec-h h2{color:#fff}
+.band .sec-h p{color:rgba(255,255,255,.72)}
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px}
+@media (max-width:960px){ .svc{grid-template-columns:1fr 1fr} }
+@media (max-width:520px){ .svc{grid-template-columns:1fr} }
+.svc div{border-top:1px solid rgba(255,255,255,.28);padding-top:18px}
+.svc h3{font-size:1.25rem;margin-bottom:6px;color:#F0DFBD}
+.svc p{color:rgba(255,255,255,.78);font-size:.95rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;list-style:none}
+@media (max-width:960px){ .steps{grid-template-columns:1fr 1fr} }
+@media (max-width:520px){ .steps{grid-template-columns:1fr} }
+.steps li{display:flex;flex-direction:column;gap:4px}
+.steps .num{font-family:var(--f-d);font-weight:500;font-size:3rem;line-height:1;color:var(--brass);text-align:right}
+.steps h3{font-size:1.2rem;color:var(--teal);margin-top:6px}
+.steps p{color:var(--mute);font-size:.95rem}
+
+/* owners */
+.own{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:900px){ .own{grid-template-columns:1fr;gap:26px} }
+.own .pic{container-type:inline-size}
+.own .pic div{aspect-ratio:16/10;overflow:hidden;clip-path:polygon(0 calc(26cqw * var(--slope)), 26cqw 0, 100% 0, 100% 100%, 0 100%)}
+.own .pic img{width:100%;height:100%;object-fit:cover}
+.own h2{font-size:clamp(1.7rem,3.2vw,2.5rem);color:var(--teal)}
+.own p{color:var(--mute);margin-block:14px 24px;max-width:46ch}
+.own ul{list-style:none;margin-bottom:26px;display:grid;gap:8px}
+.own li{display:flex;gap:10px;align-items:baseline}
+.own li::before{content:"";width:8px;height:8px;background:var(--brass);flex:none;transform:translateY(-1px)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+@media (max-width:900px){ .contact{grid-template-columns:1fr;gap:30px} }
+.rows{border-top:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-block:16px;border-bottom:1px solid var(--line)}
+.row span{color:var(--mute);font-size:.9rem}
+.row b{font-weight:500;font-size:1.05rem;overflow-wrap:anywhere}
+.row .r{display:flex;align-items:center;gap:12px;min-width:0}
+.copy{background:none;border:1px solid var(--line);border-radius:4px;padding:5px 12px;font-size:.8rem;cursor:pointer;color:var(--mute);flex:none}
+.copy:hover{border-color:var(--teal);color:var(--teal)}
+form.ask{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:clamp(20px,3vw,32px);display:grid;gap:16px}
+.ask h3{font-size:1.4rem;color:var(--teal)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){ .two{grid-template-columns:1fr} }
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f label,.f .lbl{font-size:.88rem;font-weight:500}
+.f input,.f select,.f textarea{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:12px 14px;font-size:1rem;resize:none;width:100%}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+.pick{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.f .pick input{position:absolute;inset-inline-start:0;top:0;width:1px;height:1px;padding:0;border:0;opacity:0;pointer-events:none}
+.pick label{border:1px solid var(--line);border-radius:4px;padding:8px 16px;cursor:pointer;font-weight:400;font-size:.95rem;color:var(--mute)}
+.pick input:checked + label{background:var(--teal);border-color:var(--teal);color:#fff}
+.pick input:focus-visible + label{outline:2px solid var(--brass);outline-offset:2px}
+.sent{background:var(--mist);border-radius:4px;padding:12px 14px;color:var(--teal);font-weight:500}
+
+/* footer */
+footer{background:var(--teal);color:rgba(255,255,255,.75);padding-block:52px env(safe-area-inset-bottom,30px)}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px}
+@media (max-width:760px){ .foot{grid-template-columns:1fr 1fr} .foot > div:first-child{grid-column:1/-1} }
+footer .brand svg,footer .brand-t b{color:#F2EEE6}
+footer .brand-t{border-color:rgba(255,255,255,.25)}
+footer .brand-t small,footer .mk-dot{color:#CBAA6B;fill:#CBAA6B}
+.foot p{max-width:38ch;margin-top:16px;font-size:.95rem}
+.foot h4{font-family:var(--f-d);font-weight:600;color:#fff;font-size:1.05rem;margin-bottom:10px}
+.foot ul{list-style:none;display:grid;gap:6px;font-size:.95rem}
+.foot a:hover{color:#fff}
+.legal{border-top:1px solid rgba(255,255,255,.18);margin-top:36px;padding-top:18px;font-size:.84rem}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mk" viewBox="0 4 173 96"><g fill="currentColor" fill-rule="evenodd"><path d="M0 100 V78 H10 V90 H22 V40.24 L32 36 V90 H39 V78 H47 V90 H53 V64 H87 V100 Z M62 90 V74 H78 V90 Z"/><path d="M95 100 V24.24 L105 20 V90 H115 V64 H137 V90 H145 V8.24 L155 4 V100 Z M122 90 V74 H130 V90 Z"/><path d="M163 100 V34.24 L173 30 V100 Z"/></g><path class="mk-dot" d="M70 42 L76 48 L70 54 L64 48 Z M126 42 L132 48 L126 54 L120 48 Z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="الفاضل العقارية، الرئيسية">
+      <svg width="86" height="48" role="img" aria-label="الفاضل"><use href="#mk"/></svg>
+      <span class="brand-t"><b>العقارية</b><small>AL FADEL REAL ESTATE</small></span>
+    </a>
+    <nav aria-label="القائمة الرئيسية">
+      <a href="#listings">العقارات</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#steps">كيف نعمل</a>
+      <a href="#owners">لأصحاب العقارات</a>
+    </nav>
+    <a class="btn" href="#contact">تواصل معنا</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-txt">
+      <h1>نعاين العقار قبل ما نعرضه عليك</h1>
+      <p class="lede">شراء وبيع وإيجار في الرياض وجدة ومكة والمدينة. كل إعلان عندنا زاره واحد من فريقنا وراجع صكّه ومخططه.</p>
+      <form class="find" id="find" role="search" aria-label="ابحث عن عقار">
+        <label>الغرض
+          <select id="fPurpose"><option value="all">بيع وإيجار</option><option value="sale">للبيع</option><option value="rent">للإيجار</option></select>
+        </label>
+        <label>نوع العقار
+          <select id="fType"><option value="all">كل الأنواع</option><option value="apartment">شقة</option><option value="villa">فيلا أو دوبلكس</option><option value="land">أرض</option><option value="commercial">تجاري</option><option value="building">عمارة</option></select>
+        </label>
+        <label>المدينة
+          <select id="fCity"><option value="all">كل المدن</option><option>الرياض</option><option>جدة</option><option>مكة المكرمة</option><option>المدينة المنورة</option></select>
+        </label>
+        <button class="btn" type="submit">اعرض العقارات</button>
+      </form>
+      <div class="facts">
+        <span><b class="n">250</b> عقار مدرج</span>
+        <span><b class="n">180</b> صفقة مكتملة</span>
+        <span><b class="n">8</b> سنوات في السوق</span>
+      </div>
+    </div>
+
+    <div class="skyline" id="skyline" role="group" aria-label="اختر مدينة">
+      <button class="tower house h1" type="button" data-city="all" aria-pressed="true">
+        <span class="ph"><img src="img/villa.jpg" alt=""></span>
+        <span class="lab"><b>كل المدن</b><span data-count="all"></span></span>
+      </button>
+      <button class="tower h2" type="button" data-city="جدة" aria-pressed="false">
+        <span class="ph"><img src="img/jeddah.jpg" alt="" style="object-position:13% 50%"></span>
+        <span class="lab"><b>جدة</b><span data-count="جدة"></span></span>
+      </button>
+      <button class="tower h3" type="button" data-city="الرياض" aria-pressed="false">
+        <span class="ph"><img src="img/riyadh.jpg" alt="" style="object-position:47% 50%"></span>
+        <span class="lab"><b>الرياض</b><span data-count="الرياض"></span></span>
+      </button>
+      <button class="tower h4" type="button" data-city="مكة المكرمة" aria-pressed="false">
+        <span class="ph"><img src="img/makkah.jpg" alt="" style="object-position:44% 50%"></span>
+        <span class="lab"><b>مكة المكرمة</b><span data-count="مكة المكرمة"></span></span>
+      </button>
+      <button class="tower h5" type="button" data-city="المدينة المنورة" aria-pressed="false">
+        <span class="ph"><img src="img/madinah.jpg" alt="" style="object-position:18% 50%"></span>
+        <span class="lab"><b>المدينة المنورة</b><span data-count="المدينة المنورة"></span></span>
+      </button>
+    </div>
+  </div>
+  <div class="wrap"><div class="ground"></div></div>
+</section>
+
+<section class="sec" id="listings">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>عقارات جاهزة للمعاينة</h2>
+      <div class="chips" role="group" aria-label="الغرض">
+        <button class="chip" type="button" data-p="all" aria-pressed="true">الكل</button>
+        <button class="chip" type="button" data-p="sale" aria-pressed="false">للبيع</button>
+        <button class="chip" type="button" data-p="rent" aria-pressed="false">للإيجار</button>
+      </div>
+    </div>
+    <div class="status" id="status" aria-live="polite"></div>
+    <div class="list" id="list"></div>
+  </div>
+</section>
+
+<section class="sec band" id="services">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>فريق واحد من التسعير إلى المفتاح</h2>
+      <p>ما تتنقل بين مكاتب. اللي يستلم طلبك هو اللي يكمل معك للآخر.</p>
+    </div>
+    <div class="svc">
+      <div><h3>بيع وشراء</h3><p>نسعّر العقار على صفقات الحي الفعلية، ونسوّقه للمشترين الجادين حتى الإفراغ.</p></div>
+      <div><h3>تأجير سكني وتجاري</h3><p>نختار المستأجر، نوثّق العقد في منصة إيجار، ونتابع معك طوال مدة العقد.</p></div>
+      <div><h3>تصوير وتسويق</h3><p>تصوير احترافي وفيديو للعقار، وإعلانات توصل للي يدوّر على مثله.</p></div>
+      <div><h3>استشارة استثمارية</h3><p>نحسب لك العائد المتوقع ونقارن الأحياء قبل ما تدفع ريال.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="steps">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>كيف تمشي الصفقة معنا</h2>
+      <p>أربع خطوات، وتعرف في كل وحدة وين وصلنا.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="num n">1</span><h3>نسمع منك</h3><p>الميزانية، الحي، وعدد الغرف. عشر دقائق على الجوال تكفي.</p></li>
+      <li><span class="num n">2</span><h3>نرشّح ونعاين</h3><p>نرسل لك عقارات مطابقة ونرتب الزيارات في الوقت اللي يناسبك.</p></li>
+      <li><span class="num n">3</span><h3>نفاوض ونراجع</h3><p>نتفاوض على السعر ونراجع الصك والعقد قبل أي توقيع.</p></li>
+      <li><span class="num n">4</span><h3>نسلّمك المفتاح</h3><p>إفراغ أو عقد إيجار موثّق، ونبقى معك بعد الاستلام.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec tight" id="owners">
+  <div class="wrap own">
+    <div class="pic"><div><img src="img/townhouses.jpg" alt="صف من البيوت الحديثة البيضاء" loading="lazy"></div></div>
+    <div>
+      <h2>عندك عقار تبي تبيعه أو تأجّره؟</h2>
+      <p>أرسل لنا تفاصيله، ونرد عليك خلال يوم عمل بسعر مقترح وخطة تسويق.</p>
+      <ul>
+        <li>تقييم مبدئي للسعر بدون مقابل</li>
+        <li>تصوير العقار على حسابنا</li>
+        <li>ما ندفّعك شي قبل إتمام الصفقة</li>
+      </ul>
+      <a class="btn" href="#contact" data-intent="sell">أضف عقارك</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec tight" id="contact">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>تواصل معنا</h2>
+      <p>من الأحد إلى الخميس، من ٩ الصبح إلى ٩ المساء.</p>
+    </div>
+    <div class="contact">
+      <div class="rows">
+        <div class="row"><span>الهاتف</span><div class="r"><b class="n" id="c1">+966 50 000 0000</b><button class="copy" type="button" data-copy="c1">نسخ</button></div></div>
+        <div class="row"><span>واتساب</span><div class="r"><b class="n" id="c2">+966 55 000 0000</b><button class="copy" type="button" data-copy="c2">نسخ</button></div></div>
+        <div class="row"><span>البريد</span><div class="r"><b class="n" id="c3">info@alfadel-realestate.sa</b><button class="copy" type="button" data-copy="c3">نسخ</button></div></div>
+        <div class="row"><span>المكتب</span><b>الرياض، حي السليمانية</b></div>
+      </div>
+
+      <form class="ask" id="ask">
+        <h3>اطلب اتصال</h3>
+        <div class="f">
+          <span class="lbl" id="intentLbl">وش تبي؟</span>
+          <div class="pick" role="radiogroup" aria-labelledby="intentLbl">
+            <input type="radio" name="intent" id="i-buy" checked><label for="i-buy">أشتري</label>
+            <input type="radio" name="intent" id="i-rent"><label for="i-rent">أستأجر</label>
+            <input type="radio" name="intent" id="i-sell"><label for="i-sell">أبيع عقاري</label>
+            <input type="radio" name="intent" id="i-lease"><label for="i-lease">أأجّر عقاري</label>
+          </div>
+        </div>
+        <div class="two">
+          <div class="f"><label for="aName">الاسم</label><input id="aName" type="text" autocomplete="name" required></div>
+          <div class="f"><label for="aPhone">رقم الجوال</label><input id="aPhone" type="tel" inputmode="tel" placeholder="05xxxxxxxx" pattern="0?5[0-9]{8}" required></div>
+        </div>
+        <div class="f"><label for="aCity">المدينة</label>
+          <select id="aCity"><option>الرياض</option><option>جدة</option><option>مكة المكرمة</option><option>المدينة المنورة</option></select>
+        </div>
+        <div class="f"><label for="aMsg">تفاصيل تساعدنا (اختياري)</label><textarea id="aMsg" rows="3" placeholder="الحي، الميزانية، عدد الغرف"></textarea></div>
+        <button class="btn" type="submit">أرسل الطلب</button>
+        <div class="sent" id="sent" hidden>وصلنا طلبك. بنتصل عليك في أقرب وقت خلال ساعات العمل.</div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><svg width="112" height="62" role="img" aria-label="الفاضل"><use href="#mk"/></svg><span class="brand-t"><b>العقارية</b><small>AL FADEL REAL ESTATE</small></span></a>
+        <p>وساطة عقارية في الرياض وجدة ومكة المكرمة والمدينة المنورة.</p>
+      </div>
+      <div><h4>الموقع</h4><ul><li><a href="#listings">العقارات</a></li><li><a href="#services">خدماتنا</a></li><li><a href="#steps">كيف نعمل</a></li><li><a href="#contact">تواصل معنا</a></li></ul></div>
+      <div><h4>المدن</h4><ul><li>الرياض</li><li>جدة</li><li>مكة المكرمة</li><li>المدينة المنورة</li></ul></div>
+    </div>
+    <div class="legal">© 2026 الفاضل العقارية. جميع الحقوق محفوظة.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var B = 'img/';
+  var data = [
+    {t:"فيلا دورين مع مسبح", city:"الرياض", hood:"حي الملقا", p:"sale", ty:"villa", price:"3,200,000", unit:"ريال", specs:[["المساحة","450 م²"],["الغرف","5"],["الواجهة","شمالية"],["الشارع","20 م"]], img:"villa.jpg"},
+    {t:"شقة مفروشة بالكامل", city:"جدة", hood:"حي الشاطئ", p:"rent", ty:"apartment", price:"7,500", unit:"ريال في الشهر", specs:[["المساحة","140 م²"],["الغرف","2"],["الدور","6"],["المصعد","يوجد"]], img:"apartment.jpg"},
+    {t:"أرض سكنية على شارعين", city:"الرياض", hood:"حي النرجس", p:"sale", ty:"land", price:"1,800,000", unit:"ريال", specs:[["المساحة","900 م²"],["الواجهة","شرقية"],["الشارع","15 و20 م"],["الاستخدام","سكني"]], img:"land.jpg"},
+    {t:"دوبلكس جديد لم يُسكن", city:"جدة", hood:"أبحر الشمالية", p:"sale", ty:"villa", price:"2,450,000", unit:"ريال", specs:[["المساحة","420 م²"],["الغرف","5"],["الواجهة","غربية"],["الشارع","16 م"]], img:"duplex.jpg"},
+    {t:"مكتب في برج إداري", city:"الرياض", hood:"حي العليا", p:"rent", ty:"commercial", price:"120,000", unit:"ريال في السنة", specs:[["المساحة","180 م²"],["الدور","12"],["المواقف","4"],["التشطيب","جاهز"]], img:"office.jpg"},
+    {t:"شقة أربع غرف بصالة واسعة", city:"مكة المكرمة", hood:"حي العزيزية", p:"sale", ty:"apartment", price:"1,150,000", unit:"ريال", specs:[["المساحة","230 م²"],["الغرف","4"],["الدور","3"],["المصعد","يوجد"]], img:"living.jpg"},
+    {t:"عمارة سكنية ثماني شقق", city:"مكة المكرمة", hood:"حي الشوقية", p:"sale", ty:"building", price:"6,400,000", unit:"ريال", specs:[["المساحة","720 م²"],["الشقق","8"],["الواجهة","جنوبية"],["الشارع","20 م"]], img:"facade.jpg"},
+    {t:"شقة ثلاث غرف", city:"المدينة المنورة", hood:"حي العزيزية", p:"sale", ty:"apartment", price:"980,000", unit:"ريال", specs:[["المساحة","165 م²"],["الغرف","3"],["الدور","2"],["المصعد","يوجد"]], img:"skyline.jpg"}
+  ];
+  var L = {p:{sale:"للبيع",rent:"للإيجار"}, ty:{apartment:"شقة",villa:"فيلا أو دوبلكس",land:"أرض",commercial:"تجاري",building:"عمارة"}};
+  var s = {p:"all", ty:"all", city:"all"};
+  var list = document.getElementById('list'), status = document.getElementById('status');
+  var word = function(n){ return n===0 ? 'لا توجد عقارات' : n===1 ? 'عقار واحد' : n===2 ? 'عقاران' : (n>=3 && n<=10) ? n+' عقارات' : n+' عقار'; };
+
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var c = el.dataset.count, n = data.filter(function(d){ return c==='all' || d.city===c; }).length;
+    el.textContent = word(n);
+  });
+
+  function card(d){
+    return '<article class="item">'+
+      '<div class="pic"><img src="'+B+d.img+'" alt="'+d.t+'" loading="lazy"></div>'+
+      '<div class="deal'+(d.p==='rent'?' rent':'')+'"><i></i>'+L.p[d.p]+'</div>'+
+      '<div class="price"><span class="n">'+d.price+'</span><small>'+d.unit+'</small></div>'+
+      '<h3>'+d.t+'</h3>'+
+      '<div class="where">'+d.city+'، '+d.hood+'</div>'+
+      '<dl>'+d.specs.map(function(x){ return '<div><dt>'+x[0]+'</dt><dd>'+x[1]+'</dd></div>'; }).join('')+'</dl>'+
+    '</article>';
+  }
+  function render(){
+    var out = data.filter(function(d){ return (s.p==='all'||d.p===s.p) && (s.ty==='all'||d.ty===s.ty) && (s.city==='all'||d.city===s.city); });
+    list.innerHTML = out.length ? out.map(card).join('') :
+      '<div class="none"><b>ما عندنا عقار بهذه المواصفات اليوم</b>غيّر المدينة أو النوع، أو اطلب اتصال ونبحث لك عن عقار يناسبك.</div>';
+    var parts = [];
+    if(s.p!=='all') parts.push(L.p[s.p]);
+    if(s.ty!=='all') parts.push(L.ty[s.ty]);
+    if(s.city!=='all') parts.push('في '+s.city);
+    status.innerHTML = parts.length ? word(out.length)+'، '+parts.join('، ')+'<button type="button" id="reset">اعرض الكل</button>' : word(out.length)+' في أربع مدن';
+    var r = document.getElementById('reset'); if(r) r.onclick = function(){ set({p:'all',ty:'all',city:'all'}); };
+    document.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.p===s.p)); });
+    document.querySelectorAll('.tower').forEach(function(t){ t.setAttribute('aria-pressed', String(t.dataset.city===s.city)); });
+    document.getElementById('fPurpose').value = s.p; document.getElementById('fType').value = s.ty; document.getElementById('fCity').value = s.city;
+  }
+  function set(o){ for(var k in o) s[k]=o[k]; render(); }
+  function go(){ document.getElementById('listings').scrollIntoView({behavior:'smooth'}); }
+
+  document.querySelectorAll('.chip').forEach(function(c){ c.addEventListener('click', function(){ set({p:c.dataset.p}); }); });
+  document.querySelectorAll('.tower').forEach(function(t){ t.addEventListener('click', function(){ set({city:t.dataset.city}); go(); }); });
+  document.getElementById('find').addEventListener('submit', function(e){
+    e.preventDefault();
+    set({p:document.getElementById('fPurpose').value, ty:document.getElementById('fType').value, city:document.getElementById('fCity').value}); go();
+  });
+  document.querySelectorAll('[data-intent="sell"]').forEach(function(a){ a.addEventListener('click', function(){ document.getElementById('i-sell').checked = true; }); });
+
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click', function(){
+      var el = document.getElementById(b.dataset.copy), txt = el.textContent.trim();
+      var ok = function(){ b.textContent = 'تم النسخ'; setTimeout(function(){ b.textContent = 'نسخ'; }, 1500); };
+      var sel = function(){ var r = document.createRange(); r.selectNodeContents(el); var g = getSelection(); g.removeAllRanges(); g.addRange(r); ok(); };
+      try{ navigator.clipboard.writeText(txt).then(ok, sel); }catch(e){ sel(); }
+    });
+  });
+  var ask = document.getElementById('ask');
+  ask.addEventListener('submit', function(e){
+    e.preventDefault(); document.getElementById('sent').hidden = false;
+    ask.querySelectorAll('input[type=text],input[type=tel],textarea').forEach(function(f){ f.value=''; });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
